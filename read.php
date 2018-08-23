@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,12 +30,14 @@
         $randoList=$db->query('SELECT * FROM hiking');
         $randoFetch=$randoList->fetchAll();
         foreach ($randoFetch as $r){
-            echo '<tr><td>'.$r[1].'</td>';
+            echo '<tr><td><a href=update.php?index='.$r[0].'/>'.$r[1].'</a></td>';  
             echo '<td>'.$r[2].'</td>';
             echo '<td>'.$r[3].'</td>';
             echo '<td>'.$r[4].'</td>';
-            echo '<td>'.$r[5].'</td></tr>';
+            echo '<td>'.$r[5].'</td>';
+            echo '<td><form action="delete.php" method="post"><input type= hidden name="id" value='.$r[0].'><input type="submit" value="effacer"></form></td></tr>';
         }
+        //print_r($randoFetch);
         ?>
     </table>
   </body>
